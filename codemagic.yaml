@@ -7,5 +7,4 @@ workflows:
         XCODE_SCHEME: "iosApp" # Название схемы
       xcode: latest # Или укажи конкретную версию, если нужно
     artifacts:
-      - build/ios/iphoneos/*.ipa
-      - build/ios/iphoneos/*.app
+        - build/ios/ipa/*.ipa
