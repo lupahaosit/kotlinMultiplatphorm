@@ -2,18 +2,14 @@ workflows:
   ios:
     name: Build iOS app
     environment:
-      flutter: stable
-    platforms:
-      ios:
-        # Используем последнюю доступную версию Xcode
-        xcode: latest
+      xcode: latest
     steps:
       - checkout
 
       - run:
           name: Install dependencies
           script: |
-            # Установим необходимые зависимости, например, Kotlin SDK
+            # Устанавливаем Kotlin через SDKMAN
             curl -sS https://get.sdkman.io | bash
             source "$HOME/.sdkman/bin/sdkman-init.sh"
             sdk install kotlin
@@ -21,11 +17,9 @@ workflows:
       - run:
           name: Build iOS app
           script: |
-            # Выполним сборку проекта
             ./gradlew :iosApp:build
 
       - run:
           name: Run iOS Tests
           script: |
-            # Запустим тесты для iOS
             ./gradlew :iosApp:test
