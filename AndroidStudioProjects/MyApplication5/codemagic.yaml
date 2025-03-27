@@ -1,0 +1,39 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    platform: ios
+    ios:
+      xcode: latest # указываем, что будет использоваться последняя версия Xcode
+      simulator: iphone-12 # Симулятор для тестирования
+    environment:
+      vars:
+        # Указываем переменные окружения, если нужно
+        KOTLIN_VERSION: "1.8.10" # Версия Kotlin, используемая в проекте
+    steps:
+      # Шаг для получения исходников
+      - checkout
+
+      # Установка зависимостей, если необходимо
+      - run:
+          name: Install Dependencies
+          script: |
+            curl -sS https://get.sdkman.io | bash
+            sdk install kotlin $KOTLIN_VERSION
+
+      # Сборка проекта
+      - run:
+          name: Build Kotlin Multiplatform Project
+          script: |
+            ./gradlew build
+
+      # Сборка проекта для iOS
+      - run:
+          name: Build iOS
+          script: |
+            ./gradlew :iosApp:build
+
+      # Запуск тестов на iOS
+      - run:
+          name: Run Tests
+          script: |
+            ./gradlew :iosApp:test
