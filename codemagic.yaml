@@ -3,10 +3,9 @@ workflows:
     name: iOS Sample
     environment:
       vars:
-        XCODE_WORKSPACE: "iosApp.xcodeproj" # Убедись, что имя верное
+        XCODE_WORKSPACE: "iosApp.xcworkspace" # Убедись, что имя верное
         XCODE_SCHEME: "iosApp" # Название схемы
-      xcode:
-        version: latest # Или укажи конкретную версию, если нужно
+      xcode: latest # Или укажи конкретную версию, если нужно
     scripts:
       - name: Install dependencies
         script: |
