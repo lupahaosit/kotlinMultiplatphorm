@@ -5,9 +5,6 @@ workflows:
       flutter: stable
       xcode: latest
     scripts:
-      - name: Clean build
-        script: |
-          flutter clean
       - name: Build .ipa
         script: |
           flutter build ipa --no-codesign
