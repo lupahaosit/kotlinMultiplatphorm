@@ -1,6 +1,10 @@
+plugins {
+    kotlin("multiplatform")
+}
+
 kotlin {
-    iosArm64()  // для реальных устройств
-    iosX64()    // для симуляторов
+    iosX64()  // для симуляторов
+    iosArm64() // для реальных устройств
 
     sourceSets {
         val iosMain by creating {
