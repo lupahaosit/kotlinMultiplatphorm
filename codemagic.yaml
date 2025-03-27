@@ -1,15 +1,5 @@
 workflows:
-  ios:
-    name: Build iOS app
-    environment:
-      xcode: latest
-    scripts:
-      - name: Install dependencies
-        script: |
-          curl -sS https://get.sdkman.io | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install kotlin
-      - name: Build iOS app
-        script: ./gradlew :iosApp:build
-      - name: Run iOS Tests
-        script: ./gradlew :iosApp:test
+  sample-workflow:
+    name: Codemagic Sample Workflow
+    max_build_duration: 120
+    instance_type: mac_mini_m2
