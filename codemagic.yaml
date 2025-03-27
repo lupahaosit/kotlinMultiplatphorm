@@ -1,21 +1,6 @@
 workflows:
   ios-workflow-id:
-    name: iOS Sample Workflow
-    environment:
-      xcode: latest
-    scripts:
-      - name: Install dependencies
-        script: |
-          pod install
-      - name: Build iOS app
-        script: |
-          xcodebuild -workspace YourApp.xcworkspace -scheme YourAppScheme -configuration Release -sdk iphoneos archive -archivePath YourApp.xcarchive
-          xcodebuild -exportArchive -archivePath YourApp.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath ./build/ios/iphoneos/
+    name: iOS Sample
     artifacts:
       - build/ios/iphoneos/*.ipa
       - build/ios/iphoneos/*.app
-      - build/ios/iphoneos/*.dSYM.zip
-    publishing:
-      email:
-        recipients:
-          - your-email@example.com
