@@ -1,5 +1,15 @@
 workflows:
   ios-workflow-id:
-    name: iOS Sample
+    name: iOS Test Build
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - name: Clean build
+        script: |
+          flutter clean
+      - name: Build .ipa
+        script: |
+          flutter build ipa --no-codesign
     artifacts:
       - build/ios/ipa/*.ipa
