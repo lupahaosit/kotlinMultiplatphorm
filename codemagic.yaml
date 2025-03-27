@@ -3,23 +3,13 @@ workflows:
     name: Build iOS app
     environment:
       xcode: latest
-    steps:
-      - checkout
-
-      - run:
-          name: Install dependencies
-          script: |
-            # Устанавливаем Kotlin через SDKMAN
-            curl -sS https://get.sdkman.io | bash
-            source "$HOME/.sdkman/bin/sdkman-init.sh"
-            sdk install kotlin
-
-      - run:
-          name: Build iOS app
-          script: |
-            ./gradlew :iosApp:build
-
-      - run:
-          name: Run iOS Tests
-          script: |
-            ./gradlew :iosApp:test
+    scripts:
+      - name: Install dependencies
+        script: |
+          curl -sS https://get.sdkman.io | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install kotlin
+      - name: Build iOS app
+        script: ./gradlew :iosApp:build
+      - name: Run iOS Tests
+        script: ./gradlew :iosApp:test
