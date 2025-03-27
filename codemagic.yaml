@@ -1,3 +1,31 @@
 workflows:
   ios-workflow-id:
     name: iOS Sample Workflow
+    platform: ios
+    app:
+      build:
+        ios:
+          # Указываем симулятор iOS, чтобы можно было тестировать на устройстве
+          simulator: true
+    steps:
+      - name: Install dependencies
+        script: |
+          echo "Installing dependencies..."
+          # Задай команды для установки зависимостей, если они необходимы
+          # Пример для iOS:
+          # cd iosApp
+          # pod install
+
+      - name: Build iOS app
+        script: |
+          echo "Building iOS app..."
+          # Здесь будет команда для сборки iOS
+          # Например:
+          cd iosApp
+          ./gradlew build
+
+      - name: Deploy iOS app to device or simulator
+        script: |
+          echo "Deploying to simulator or device..."
+          # Развертывание на iOS симуляторе (для тестирования)
+          # или на реальном устройстве
